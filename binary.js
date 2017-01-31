@@ -21,20 +21,32 @@ PSEUDOCODE
 - continue until "half_array" index is equal to number, at which point return the index position of number chosen.
 */
 
-'use strict'
+"use strict"
 
-var test_array_genap = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-var test_array_ganjil = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+var test_array_a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+var test_array_b = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
-function binary_search (search, array) {
-  // Your code here
+function binary_search(search, arr) {
+  let nilaiAwal = 0;
+  let nilaiTengah = 0;
+  let nilaiAkhir = arr.length - 1;  // 9
+
+  while( nilaiAwal <= nilaiAkhir ) {
+    nilaiTengah = Math.floor( (nilaiAwal + nilaiAkhir) / 2 )  // 4 => 5
+    if ( search  > arr[nilaiTengah] ) {                       // 4 < 5 (true)
+      nilaiAwal = nilaiTengah + 1;
+    } else if ( search < arr[nilaiTengah] ) {
+      nilaiAkhir = nilaiTengah - 1;                           // 4 - 1 = 3 => 3
+    } else {
+      return Number(nilaiTengah) + 1;
+    }
+  }
 }
 
 // Driver code
 console.log(binary_search(5, test_array_a))
-console.log(binary_search(10, test_array_a))
-console.log(binary_search(2, test_array_a))
-
 console.log(binary_search(6, test_array_b))
+console.log(binary_search(10, test_array_a))
 console.log(binary_search(11, test_array_b))
+console.log(binary_search(2, test_array_a))
 console.log(binary_search(2, test_array_b))
