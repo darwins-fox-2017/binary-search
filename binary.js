@@ -6,6 +6,14 @@ test_array_b = (100..201).to_a
 puts binary_search(135, test_array) == 35
 */
 
+test_array_a = []
+test_array_b = []
+for (var i = 1; i < 200; i++) {
+  test_array_a.push(i)
+}
+for (var i = 1; i < 201; i++) {
+  test_array_b.push(i)
+}
 /*
 PSEUDOCODE
 
@@ -33,14 +41,13 @@ function binary_search (search, array) {
   var guess;
   while (min <= max) {
     // index tengah
-    console.log('max : '  + max);
+    // console.log('max : '  + max);
     guess = Math.ceil((max + min) / 2)
-    console.log('guees : ' + guess);
+    // console.log('guees : ' + guess);
     if (array[guess] == search) {
-      return array[guess]
+      return guess
     } else if (array[guess] <search) {
       min = guess + 1
-      console.log();
     } else {
       max = guess - 1
     }
@@ -57,10 +64,10 @@ for (var i = 0; i < 200; i++) {
 
 // Driver code
 console.log(binary_search(5, test_array_genap))
-// console.log(binary_search(2, test_array_genap))
-// console.log(binary_search(10, test_array_a))
-// console.log(binary_search(2, test_array_a))
-//
-// console.log(binary_search(6, test_array_b))
-// console.log(binary_search(11, test_array_b))
-// console.log(binary_search(2, test_array_b))
+console.log(binary_search(2, test_array_genap))
+console.log(binary_search(10, test_array_a))
+console.log(binary_search(2, test_array_a))
+
+console.log(binary_search(6, test_array_b))
+console.log(binary_search(11, test_array_b))
+console.log(binary_search(2, test_array_b))
