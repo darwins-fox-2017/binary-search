@@ -28,13 +28,39 @@ var test_array_ganjil = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
 function binary_search (search, array) {
   // Your code here
+  var min = 0
+  var max = array.length - 1
+  var guess;
+  while (min <= max) {
+    // index tengah
+    console.log('max : '  + max);
+    guess = Math.ceil((max + min) / 2)
+    console.log('guees : ' + guess);
+    if (array[guess] == search) {
+      return array[guess]
+    } else if (array[guess] <search) {
+      min = guess + 1
+      console.log();
+    } else {
+      max = guess - 1
+    }
+  }
+  return -1
 }
 
-// Driver code
-console.log(binary_search(5, test_array_a))
-console.log(binary_search(10, test_array_a))
-console.log(binary_search(2, test_array_a))
+var test_array = new Array
+for (var i = 0; i < 200; i++) {
+  test_array.push(i)
+}
 
-console.log(binary_search(6, test_array_b))
-console.log(binary_search(11, test_array_b))
-console.log(binary_search(2, test_array_b))
+// 2 -1 3
+
+// Driver code
+console.log(binary_search(5, test_array_genap))
+// console.log(binary_search(2, test_array_genap))
+// console.log(binary_search(10, test_array_a))
+// console.log(binary_search(2, test_array_a))
+//
+// console.log(binary_search(6, test_array_b))
+// console.log(binary_search(11, test_array_b))
+// console.log(binary_search(2, test_array_b))
