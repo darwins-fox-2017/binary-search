@@ -23,11 +23,27 @@ PSEUDOCODE
 
 'use strict'
 
-var test_array_genap = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-var test_array_ganjil = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+var test_array_a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+var test_array_b = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
 function binary_search (search, array) {
   // Your code here
+  let minInd = 0;
+  let maxInd = array.length - 1;
+  let curInd = 0;
+  let curEle = 0;
+  while(minInd <= maxInd) {
+    curInd = (minInd + maxInd) / 2 | 0;
+    curEle = array[curInd];
+
+    if(curEle < search)
+      minInd = curInd + 1;
+    else if (curEle > search)
+      maxInd = curInd -1
+    else
+      return curInd;
+  }
+  return -1
 }
 
 // Driver code
