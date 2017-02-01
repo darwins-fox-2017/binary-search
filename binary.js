@@ -1,10 +1,10 @@
-/*
-TESTS
 
+TESTS
+/*
 test_array_a = (100..200).to_a
 test_array_b = (100..201).to_a
-puts binary_search(135, test_array) == 35
-*/
+//puts binary_search(135, test_array) == 35
+console.log(test_array_a);
 
 /*
 PSEUDOCODE
@@ -27,14 +27,34 @@ var test_array_genap = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 var test_array_ganjil = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
 function binary_search (search, array) {
-  // Your code here
+  var min=0;
+  var max=array.length;
+  var mid=Math.ceil(((max+min)/2));
+  var hasil=-1;
+  var i=0;
+while(search!=array[mid]&&i<100){
+     if (search>array[mid]) {
+        min=mid;
+        mid=Math.ceil(((max+min)/2));
+     }else if(search<array[mid]) {
+       max=mid;
+       mid=Math.ceil(((max+min)/2));
+     }else{
+       hasil=mid;
+     }
+    // mid=Math.ceil(((max+min)/2));
+     //console.log(min,mid,max);
+     i=i+1;
+   }
+   hasil=mid;
+return hasil;
 }
 
-// Driver code
+/*// Driver code
 console.log(binary_search(5, test_array_a))
 console.log(binary_search(10, test_array_a))
-console.log(binary_search(2, test_array_a))
+/*console.log(binary_search(2, test_array_a))
 
 console.log(binary_search(6, test_array_b))
 console.log(binary_search(11, test_array_b))
-console.log(binary_search(2, test_array_b))
+console.log(binary_search(2, test_array_b))*/
