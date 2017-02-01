@@ -26,15 +26,28 @@ PSEUDOCODE
 var test_array_genap = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 var test_array_ganjil = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
-function binary_search (search, array) {
-  // Your code here
+function binary_search(search, array) {
+    // Your code here
+    let left = 0;
+    let right = array.length - 1;
+    while (left <= right) {
+        var mid = Math.floor((right + left) / 2)
+
+        if (array[mid] < search) {
+            left = mid + 1;
+        } else if (array[mid] > search) {
+            right = mid - 1;
+        } else {
+            return mid;
+        }
+    }
 }
 
 // Driver code
-console.log(binary_search(5, test_array_a))
-console.log(binary_search(10, test_array_a))
-console.log(binary_search(2, test_array_a))
+console.log(binary_search(5, test_array_genap))
+console.log(binary_search(10, test_array_genap))
+console.log(binary_search(2, test_array_genap))
 
-console.log(binary_search(6, test_array_b))
-console.log(binary_search(11, test_array_b))
-console.log(binary_search(2, test_array_b))
+console.log(binary_search(6, test_array_ganjil))
+console.log(binary_search(11, test_array_ganjil))
+console.log(binary_search(2, test_array_ganjil))
