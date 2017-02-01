@@ -1,5 +1,5 @@
 
-TESTS
+//TESTS
 /*
 test_array_a = (100..200).to_a
 test_array_b = (100..201).to_a
@@ -32,27 +32,32 @@ function binary_search (search, array) {
   var mid=Math.ceil(((max+min)/2));
   var hasil=-1;
   var i=0;
-while(search!=array[mid]&&i<100){
+  var maxIteration=Math.log2(array.length)+1;
+while(search!=array[mid]&&i<=maxIteration){
      if (search>array[mid]) {
         min=mid;
         mid=Math.ceil(((max+min)/2));
      }else if(search<array[mid]) {
        max=mid;
        mid=Math.ceil(((max+min)/2));
-     }else{
+     }/*else if(search==array[mid]){
        hasil=mid;
-     }
+     }*/
     // mid=Math.ceil(((max+min)/2));
      //console.log(min,mid,max);
      i=i+1;
    }
-   hasil=mid;
+   if (i<maxIteration) {
+     hasil=mid;
+   }
+
+
 return hasil;
 }
 
-/*// Driver code
-console.log(binary_search(5, test_array_a))
-console.log(binary_search(10, test_array_a))
+// Driver code
+//console.log(binary_search(5, test_array_genap))
+console.log(binary_search(13, test_array_ganjil))
 /*console.log(binary_search(2, test_array_a))
 
 console.log(binary_search(6, test_array_b))
