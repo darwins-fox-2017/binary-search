@@ -26,15 +26,54 @@ PSEUDOCODE
 var test_array_genap = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 var test_array_ganjil = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
-function binary_search (search, array) {
-  // Your code here
+let sortArrOfString = (arrOfString) => {
+  let arrOfStringLength = arrOfString.length;
+  for (let i=0;i<arrOfStringLength-1;i++) {
+    let min = i;
+    let lastMin = i;
+    for (let j=i+1;j<arrOfStringLength;j++) {
+      lastMin = arrOfString[j] < arrOfString[lastMin] && arrOfString[j] < arrOfString[i] ? j : lastMin; 
+      min = lastMin;
+    }
+    if (min !== i) {
+      let tempForCurrentArr = arrOfString[i];
+      arrOfString[i] = arrOfString[min];
+      arrOfString[min]  = tempForCurrentArr;
+    }
+  }
+  return arrOfString;
 }
 
-// Driver code
-console.log(binary_search(5, test_array_a))
-console.log(binary_search(10, test_array_a))
-console.log(binary_search(2, test_array_a))
+function binary_search (search, array) {
+  let sortedArr = sortArrOfString(array);
+  let start = 0;
+  let end = sortedArr.length-1;
+  while(start <= end) {
+    let midPoint = Math.ceil((start+end)/2);
 
-console.log(binary_search(6, test_array_b))
-console.log(binary_search(11, test_array_b))
-console.log(binary_search(2, test_array_b))
+    if (sortedArr[midPoint] === search) {
+      return midPoint;
+    } else if(sortedArr[midPoint] < search) {
+      start = midPoint+1;
+    } else if (sortedArr[midPoint] > search) {
+      end = midPoint-1;
+    } 
+  }
+  return -1;
+}
+
+let test_array_a = [];
+for(let i=100;i<201;i++) {
+  test_array_a.push(i);
+}
+// test_array_b = (100..201).to_a
+console.log(binary_search(135, test_array_a));
+// puts binary_search(135, test_array_a) == 35
+// Driver code
+console.log(binary_search(5, test_array_genap))
+console.log(binary_search(10, test_array_genap))
+console.log(binary_search(2, test_array_genap))
+
+console.log(binary_search(6, test_array_ganjil))
+console.log(binary_search(11, test_array_ganjil))
+console.log(binary_search(2, test_array_ganjil))
