@@ -23,18 +23,39 @@ PSEUDOCODE
 
 'use strict'
 
-var test_array_genap = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-var test_array_ganjil = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+var test_array_genap = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // jumlah genap
+var test_array_ganjil = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] // jumlah ganjil
 
 function binary_search (search, array) {
-  // Your code here
+ // Your code here
+  let kiri = 0;
+  let kanan = array.length-1; // 9
+
+  while(kiri<=kanan){
+    let nilai_tengah = Math.floor((kiri+kanan)/2); // = 4
+    // 5 < 10 ?
+    if(array[nilai_tengah]<search){
+      kiri = nilai_tengah+1;
+
+    } else if(array[nilai_tengah]>search){
+      kanan = nilai_tengah-1
+    }
+    else{
+      return nilai_tengah;
+    }
+
+  }
+  console.log(kiri)
+  console.log(kanan)
+  return -1;
+  
+  
 }
-
 // Driver code
-console.log(binary_search(5, test_array_a))
-console.log(binary_search(10, test_array_a))
-console.log(binary_search(2, test_array_a))
+console.log(binary_search(5, test_array_genap))
+// console.log(binary_search(10, test_array_genap))
+// console.log(binary_search(2, test_array_genap))
 
-console.log(binary_search(6, test_array_b))
-console.log(binary_search(11, test_array_b))
-console.log(binary_search(2, test_array_b))
+console.log(binary_search(6, test_array_ganjil))
+// console.log(binary_search(11, test_array_ganjil))
+// console.log(binary_search(2, test_array_ganjil))
